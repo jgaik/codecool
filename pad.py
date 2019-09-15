@@ -2,7 +2,7 @@ import rtmidi
 import time
 
 class Midi:
-
+    COLOR = 69
     def __enter__(self):
         self.midiOut = rtmidi.MidiOut()
         for port_no in range(self.midiOut.get_port_count()):
@@ -19,4 +19,4 @@ class Midi:
     def lightBoard(self, board):
         for r in range(len(board)):
             for c in range(len(board[r])):
-                self.lightCell(r,c,board[r][c])
+                self.lightCell(r,c,board[r][c] * self.COLOR)
